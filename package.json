@@ -1,0 +1,17 @@
+{ "name": "sql-generator",
+  "version": "0.0.1",
+  "description": "SQL Generator",
+  "keywords" : ["sql", "database", "rdbms"],
+  "homepage": "https://github.com/Shanon/node-sql-generator",
+  "repository" : {
+    "type" : "git",
+    "url" : "git://github.com/Shanon/node-sql-generator.git"
+  },
+  "author" : "Shota Takayama <takayama@shanon.co.jp>",
+  "main" : "./lib",
+  "scripts" : { 
+    "test" : "make test",
+    "install" : "node-waf configure build || true"
+  },
+  "engines" : { "node": ">= 0.4.11" }
+}
