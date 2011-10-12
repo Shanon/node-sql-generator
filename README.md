@@ -23,10 +23,10 @@ SQL Generator for node.js.
 
     var SqlGenerator = require('sql-generator');
     var sqlgen = new SqlGenerator();
-    var stmt2 = sqlgen.select( 'base_table', // target table
-                               [ 'id' ], // target columns
-                               { id: { '>=': 33 } } // where section
-                             );
+    var stmt = sqlgen.select( 'base_table', // target table
+                              [ 'id' ], // target columns
+                              { id: { '>=': 33 } } // where section
+                            );
     // it return this
     // stmt = { sql: 'SELECT id FROM base_table WHERE id >= $1',
                 values: [ 33 ] };
