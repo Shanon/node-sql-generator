@@ -19,6 +19,14 @@ SQL Generator for node.js.
     // stmt = { sql: 'INSERT INTO test_table ( foo, bar, buz ) VALUES ( $1, $2, $3 )',
                 values: [ 1, 'text', '2011-10-10' ] };
 
+    // or callback pattern
+    // sqlgen.insert( 'table_name',
+    //                { datas .... },
+    //                function( sql, values ) {
+    //                    ..
+    //                    ..
+    //                } );
+                
 ### SELECT
 
     var SqlGenerator = require('sql-generator');
@@ -30,6 +38,14 @@ SQL Generator for node.js.
     // it return this
     // stmt = { sql: 'SELECT id FROM base_table WHERE id >= $1',
                 values: [ 33 ] };
+
+    // or callback pattern
+    // sqlgen.select( 'table_name', ['col',....], { wheres..... }, { options.... },
+    //                function( sql, values ) {
+    //                    ..
+    //                    ..
+    //                    ..
+    //                } );
     
     var stmt2 = sqlgen.select( 'test_table', // target table
                                '*', // target columns
@@ -58,6 +74,14 @@ SQL Generator for node.js.
     // it return this
     // stmt = { sql: 'UPDATE test_table SET foo = $1, bar = $2, buz = $3 WHERE id = $4',
                 values: [ 20, 30, 40, 10 ] };
+    
+    // or callback pattern
+    // sqlgen.update( 'table_name', { wheres..... }, { datas..... },
+    //                function( sql, values ) {
+    //                    ..
+    //                    ..
+    //                    ..
+    //                } );
 
 ### DELETE
 
@@ -70,14 +94,19 @@ SQL Generator for node.js.
     // stmt = { sql: 'DELETE FROM test_table WHERE some_flag = $1',
                 values: [ 1 ] };
 
+    // or callback pattern
+    // sqlgen.delete( 'table_name', { wheres..... },
+    //                function( sql, values ) {
+    //                    ..
+    //                    ..
+    //                    ..
+    //                } );
 
 ## License
 
-Copyright (c) 2011 Shota Takayama. Shanon, Inc. &lt;takayama@shanon.co.jp&gt;
-
 The MIT License
 
-Copyright (c) <year> <copyright holders>
+Copyright (c) 2011 Shota Takayama. Shanon, Inc. &lt;takayama[at]shanon.co.jp&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
