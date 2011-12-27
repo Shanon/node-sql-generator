@@ -1,0 +1,6 @@
+Revision history for node.js extension sql-generator
+
+0.0.2  Tue Dec 27 13:21:20 JST 2011
+         - support GROUP BY
+0.0.1  2011-10-27 13:20:20
+         - first cut
