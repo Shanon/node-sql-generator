@@ -1,5 +1,5 @@
 { "name": "sql-generator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SQL Generator",
   "keywords" : ["sql", "database", "rdbms"],
   "homepage": "https://github.com/Shanon/node-sql-generator",
