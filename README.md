@@ -13,11 +13,12 @@ SQL Generator for node.js.
     var SqlGenerator = require('sql-generator');
     var sqlgen = new SqlGenerator();
     var stmt = sqlgen.insert( 'test_table', // target table
-                              { foo: 1, bar: 'text', buz: '2011-10-10' } // insert datas
+                              { foo: 1, bar: 'text', buz: '2011-10-10',
+                                ary_txt: [ 'a', 'b' ], ary_num: [ 1, 2 ] } // insert datas
                             );
     // it return this
-    // stmt = { sql: 'INSERT INTO test_table ( foo, bar, buz ) VALUES ( $1, $2, $3 )',
-                values: [ 1, 'text', '2011-10-10' ] };
+    // stmt = { sql: 'INSERT INTO test_table ( foo, bar, buz ) VALUES ( $1, $2, $3, ARRAY[ $4, $5 ], $6 )',
+                values: [ 1, 'text', '2011-10-10', 'a', 'a' ], '{1,2}' };
 
     // or callback pattern
     // sqlgen.insert( 'table_name',
@@ -61,7 +62,10 @@ SQL Generator for node.js.
                                { order: 'id' } // order section
                              );
     // it return this
-    // stmt2 = { sql: 'SELECT * FROM test_table WHERE foo = $1 AND bar >= $2 AND buz > $3 AND buz < $4 AND hoge LIKE $5 AND fuga IN ( $6, $7, $8 ) AND ( moge = $9 OR moge = $10 OR moge = $11 OR moge != $12 ) AND base_table_id IN ( SELECT id FROM base_table WHERE id >= $13 ) ORDER BY id',
+    // stmt2 = { sql: 'SELECT * FROM test_table \
+    //                 WHERE foo = $1 AND bar >= $2 AND buz > $3 AND buz < $4 AND hoge LIKE $5 \
+    //                       AND fuga IN ( $6, $7, $8 ) AND ( moge = $9 OR moge = $10 OR moge = $11 OR moge != $12 ) \
+    //                       AND base_table_id IN ( SELECT id FROM base_table WHERE id >= $13 ) ORDER BY id',
     //           values: [ 1, 10, 100, 200, '%john%', 1, 2, 3, 6, 7, 8, 9, 33 ] };
 
     // columns of type ARRAY
@@ -75,7 +79,10 @@ SQL Generator for node.js.
                                   },
                                   { order: 'id' } );
     // it return this
-    // ary_stmt = { sql: 'SELECT * FROM array_table WHERE $1 = ANY(text_ary1) AND $2 = ALL(text_ary2) AND ($3 = ANY(num_ary1) OR $4 = ANY(num_ary1)) AND ($5 != ALL(num_ary2) OR $6 != ALL(num_ary2)) AND (SELECT id FROM base_table WHERE id >= $7) = ANY(num_ary3) ORDER BY id',
+    // ary_stmt = { sql: 'SELECT * FROM array_table \
+    //                    WHERE $1 = ANY(text_ary1) AND $2 = ALL(text_ary2) AND ($3 = ANY(num_ary1) OR $4 = ANY(num_ary1)) \
+    //                          AND ($5 != ALL(num_ary2) OR $6 != ALL(num_ary2)) \
+    //                          AND (SELECT id FROM base_table WHERE id >= $7) = ANY(num_ary3) ORDER BY id',
     //              values: [ 'hoge', 'fuga', 1, 2, 1, 2, 33 ] }
 
 ### UPDATE
@@ -84,11 +91,12 @@ SQL Generator for node.js.
     var sqlgen = new SqlGenerator();
     var stmt = sqlgen.update( 'test_table', // target table
                               { id: 10 }, // where section
-                              { foo: 20, bar: 30, buz: 40 } // update datas
+                              { foo: 20, bar: 30, buz: 40,
+                                ary_num: [ 1, 2 ], ary_txt: ['a','b'] } // update datas
                             );
     // it return this
-    // stmt = { sql: 'UPDATE test_table SET foo = $1, bar = $2, buz = $3 WHERE id = $4',
-                values: [ 20, 30, 40, 10 ] };
+    // stmt = { sql: 'UPDATE test_table SET foo = $1, bar = $2, buz = $3, ary_num = $4, ary_txt = ARRAY[ $5, %6 ] WHERE id = $7',
+                values: [ 20, 30, 40, '{1,2}', 'a', 'b', 10 ] };
     
     // or callback pattern
     // sqlgen.update( 'table_name', { wheres..... }, { datas..... },
