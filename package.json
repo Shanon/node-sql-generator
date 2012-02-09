@@ -9,8 +9,5 @@
   },
   "author" : "Shota Takayama <takayama@shanon.co.jp>",
   "main" : "./lib",
-  "scripts" : { 
-    "test" : "make test"
-  },
   "engines" : { "node": ">= 0.4.11" }
 }
