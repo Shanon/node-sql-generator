@@ -1,5 +1,9 @@
 Revision history for node.js extension sql-generator
 
+0.0.5  Tue Feb 14 23:55:53 JST 2012
+         - add test
+         - support NULL Case ( IS NULL || IS NOT NULL )
+         
 0.0.4  Thu Feb  9 18:58:29 JST 2012
          - support for columns of type ARRAY in INSERT and UPDATE
          
