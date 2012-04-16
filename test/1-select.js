@@ -79,6 +79,9 @@ exports['test_parse_where'] = function( test, assert ) {
     assert.deepEqual( { sql: 'SELECT * FROM test WHERE (foo = $1 AND foo != $2)', values: [ 1, 2 ] },
                       sqlg.select('test','*', { foo: { '-and': [ 1, { '!=': 2 } ] } } ) );
     
+    assert.deepEqual( { sql: 'SELECT * FROM test WHERE (foo = $1 OR bar = $2 OR buz != $3)', values: [ 1, 2, 3 ] },
+                      sqlg.select('test', '*', { '-or': { foo: 1, bar: 2, buz: { '!=': 3 } } } ) );
+    
     assert.deepEqual( { sql: 'SELECT * FROM test WHERE foo IN ( $1, $2, $3 )', values: [ 1, 2, 3 ] },
                       sqlg.select('test','*', { foo: { in: [ 1, 2, 3 ] } } ) );
     
@@ -105,7 +108,7 @@ exports['test_parse_where'] = function( test, assert ) {
     
     assert.deepEqual( { sql: 'SELECT * FROM test WHERE (SELECT id FROM sample WHERE disable = FALSE) = ANY(ary_sample_id)', values: [] },
                       sqlg.select('test','*', { ary_sample_id: { ARRAY: 'SELECT id FROM sample WHERE disable = FALSE' } } ) );
-    
+
     if( typeof test.finish == 'function' ) test.finish();
 };
 
