@@ -1,4 +1,4 @@
-var SqlG = require('sql-generator');
+var SqlG = require('../lib/sql-generator');
 var sqlg = new SqlG();
 
 exports['test_delete'] = function( test, assert ) {

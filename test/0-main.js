@@ -2,7 +2,7 @@ var SqlG;
 
 exports['test_load_module'] = function( test, assert ) {
     if( !assert ) { assert = test; assert.finish = function() { this.done() } }
-    SqlG = require('sql-generator');
+    SqlG = require('../lib/sql-generator');
     assert.ok( typeof SqlG === 'function');
     if( typeof test.finish == 'function' ) test.finish();
 };

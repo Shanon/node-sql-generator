@@ -1,6 +1,6 @@
 var util = require('util');
 
-var SqlG = require('sql-generator');
+var SqlG = require('../lib/sql-generator');
 var sqlg = new SqlG();
 
 
