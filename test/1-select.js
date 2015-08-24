@@ -1,6 +1,6 @@
 var util = require('util');
 
-var SqlG = require('sql-generator');
+var SqlG = require('../lib/sql-generator');
 var sqlg = new SqlG();
 
 
@@ -137,3 +137,13 @@ exports['test_parse_options'] = function( test, assert ) {
     
     if( typeof test.finish == 'function' ) test.finish();
 };
+
+exports.test_join = function( test, assert ) {
+    if( !assert ) { assert = test; assert.finish = function() { this.done() } }
+    
+    assert.deepEqual( { sql: 'SELECT * FROM T1 INNER JOIN T2 ON T1.this = T2.that INNER JOIN T3 ON T2.some = T3.other AND T2.i != T3.d', values: [] },
+                     sqlg.select(["T1",{ "INNER_JOIN": { "T1.this" : "T2.that" } }, "T2", { "INNER_JOIN": { "T2.some": "T3.other", "T2.i": {"!=": "T3.d"}}}, "T3"],
+                                 '*'));
+    
+    if( typeof test.finish == 'function' ) test.finish();
+}
