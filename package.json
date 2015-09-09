@@ -1,5 +1,5 @@
 { "name": "sql-generator",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "SQL Generator",
   "keywords" : ["sql", "database", "rdbms"],
   "homepage": "https://github.com/Shanon/node-sql-generator",
@@ -10,10 +10,17 @@
   "scripts" : {
       "test": "nodeunit test"
   },
-  "author" : "Shota Takayama <takayama@shanon.co.jp>",
+  "author" : "Shota Takayama <takayama[at]shanon.co.jp>",
   "main" : "./lib",
   "engines" : { "node": ">= 0.4.11" },
   "devDependencies" : {
-      "nodeunit": "*"
-  }
+      "nodeunit": "0.9.0"
+  },
+  "licenses" : [
+      {
+          "type": "MIT",
+          "url": "http://www.opensource.org/licenses/mit-license.php"
+      }
+  ],
+  "license": "MIT"
 }
