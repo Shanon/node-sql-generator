@@ -1,26 +1,33 @@
-{ "name": "sql-generator",
-  "version": "0.0.7",
-  "description": "SQL Generator",
-  "keywords" : ["sql", "database", "rdbms"],
-  "homepage": "https://github.com/Shanon/node-sql-generator",
-  "repository" : {
-    "type" : "git",
-    "url" : "git://github.com/Shanon/node-sql-generator.git"
-  },
-  "scripts" : {
-      "test": "nodeunit test"
-  },
-  "author" : "Shota Takayama <takayama[at]shanon.co.jp>",
-  "main" : "./lib",
-  "engines" : { "node": ">= 0.4.11" },
-  "devDependencies" : {
-      "nodeunit": "0.9.0"
-  },
-  "licenses" : [
-      {
-          "type": "MIT",
-          "url": "http://www.opensource.org/licenses/mit-license.php"
-      }
-  ],
-  "license": "MIT"
+{
+    "name": "sql-generator",
+    "version": "0.0.8",
+    "description": "SQL Generator",
+    "keywords": [
+        "sql",
+        "database",
+        "rdbms"
+    ],
+    "homepage": "https://github.com/Shanon/node-sql-generator",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Shanon/node-sql-generator.git"
+    },
+    "scripts": {
+        "test": "nodeunit test"
+    },
+    "author": "Shota Takayama <takayama[at]shanon.co.jp>",
+    "main": "./lib",
+    "engines": {
+        "node": ">= 0.4.11"
+    },
+    "devDependencies": {
+        "nodeunit": "0.9.0"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        }
+    ],
+    "license": "MIT"
 }
