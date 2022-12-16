@@ -1,7 +1,11 @@
 Revision history for node.js extension sql-generator
 
+0.0.9  Sat Dec 17 04:58:17 JST 2022
+         - support NOT IN Case ( xx NOT IN ( a, b, c ) )
+
 0.0.6  Mon Apr 16 18:14:10 JST 2012
          - support OR join Case ( foo = 1 OR bar = 2 OR buz != 3 )
+
 0.0.5  Tue Feb 14 23:55:53 JST 2012
          - add test
          - support NULL Case ( IS NULL || IS NOT NULL )
