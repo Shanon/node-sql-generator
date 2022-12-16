@@ -84,7 +84,10 @@ exports['test_parse_where'] = function( test, assert ) {
     
     assert.deepEqual( { sql: 'SELECT * FROM test WHERE foo IN ( $1, $2, $3 )', values: [ 1, 2, 3 ] },
                       sqlg.select('test','*', { foo: { in: [ 1, 2, 3 ] } } ) );
-    
+
+    assert.deepEqual( { sql: 'SELECT * FROM test WHERE foo NOT IN ( $1, $2, $3 )', values: [ 1, 2, 3 ] },
+                      sqlg.select('test','*', { foo: { "not in": [ 1, 2, 3 ] } } ) );
+
     assert.deepEqual( { sql: 'SELECT * FROM test WHERE foo = $1 AND sample_id IN ( SELECT id FROM sample WHERE name = $2 )', values: [ 1, 'hoge' ] },
                       sqlg.select('test','*', { foo: 1, sample_id: { in: { sql: { sql: 'SELECT id FROM sample WHERE name = $1', values: [ 'hoge' ] } } } } ) );
     
